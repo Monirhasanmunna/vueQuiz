@@ -98,6 +98,7 @@ const reset = ()=>{
 </script>
 
 <template>
+  <transition name="fade" mode="out-in">
     <Questions
     v-if="questionsAnswered < questions.length"
     :questions="questions"
@@ -105,9 +106,8 @@ const reset = ()=>{
     :rightAnswere = "rightAnswere"
     @questionAnswered="questionAnswered"
     />
-
     <Result v-else :rightAnswere="rightAnswere" :results="results"/>
-
+  </transition>
     <button v-show="questionsAnswered == questions.length" @click="reset()" type="button" class="reset-btn">Reset</button>
 </template>
 
